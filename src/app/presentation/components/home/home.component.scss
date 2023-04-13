@@ -1,0 +1,53 @@
+
+.header {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px;
+  align-items: center;
+}
+
+.header__logo {
+  width: auto;
+  height: auto;
+  text-align:center;
+}
+
+.header__logo img {
+  display:inline-block;
+}
+
+.jumbotron {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  text-align: center;
+  color: #2d4681;
+  background-color: rgb(255, 247, 247);
+}
+
+
+
+.footer {
+  background-color: #2790f3;
+  text-rendering: auto;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-emphasis-color: white;
+}
+
+.container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-md-6 {
+  flex: 1;
+  padding: 10px;
+}
+
+.btn-lg {
+  padding: 1rem;
+  font-size: 1.25rem;
+}

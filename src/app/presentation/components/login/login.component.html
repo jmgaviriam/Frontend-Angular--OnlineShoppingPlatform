@@ -1,0 +1,90 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Website</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="header__content">
+            <div class="header__logo">
+              <img src="assets/images/th.jpg" alt="logo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="jumbotron" id="linear-gradient">
+    <div class="text-center">
+      <div class="authBlock">
+        <h3>Enter the following information</h3>
+        <div class="mb-3 row">
+          <form [formGroup]="form" action="" method="post"
+            class="form-control mt-3 p-3 border-3 border-info text-start">
+            <div class="mb-3 row">
+              <input type="text" class="form-control form-control-sm mx-auto" placeholder="Correo"
+                formControlName="email" name="email" value="">
+              <div class="mensaje" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+                <p class="text-danger">E-mail required</p>
+              </div>
+              <div class="mensaje" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
+                <p class="text-danger">The e-mail address is invalid</p>
+              </div>
+              <div class="mensaje" *ngIf="form.get('email')?.hasError('pattern') && form.get('email')?.touched">
+                <p class="text-danger">The e-mail does not comply with the required format</p>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <input type="password" class="form-control form-control-sm mx-auto" placeholder="Contraseña"
+                formControlName="password" name="password" value="">
+              <div class="mensaje" *ngIf="
+                      form.get('password')?.hasError('required') &&
+                      form.get('password')?.touched
+                    ">
+                <p class="text-danger">password required</p>
+              </div>
+            </div>
+          </form>
+          <!-- Calling SignIn Api from AuthService -->
+          <div class="mb-3 row" *ngIf="form.valid">
+            <input type="button" class="btn btnPrimary" value="Log in" (click)="login()">
+          </div>
+          <div class="mb-3 row">
+            <span class="or"><span class="orInner">Already have a Google account?</span></span>
+          </div>
+          <!-- Calling GoogleAuth Api from AuthService -->
+          <div class="mb-3 row">
+            <button type="button" class="btn googleBtn" (click)="auth()">
+              <i class="fab fa-google-plus-g"></i>
+              Login with Google
+            </button>
+          </div>
+          <!-- <div class="forgotPassword">
+        <span routerLink="/forgot-password">Forgot Password?</span>
+      </div> -->
+        </div>
+        <div class="redirectToLogin">
+          <span>Don't have an account? <button type="button" class="btn"><span class="redirect" routerLink="/signup">
+                Register now!</span></button></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">All rights reserved</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
