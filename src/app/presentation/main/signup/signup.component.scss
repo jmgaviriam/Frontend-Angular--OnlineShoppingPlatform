@@ -1,0 +1,47 @@
+
+.header {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px;
+  align-items: center;
+}
+
+.header__logo {
+  width: auto;
+  height: auto;
+  text-align:center;
+}
+
+.header__logo img {
+  display:inline-block;
+}
+
+.jumbotron {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  color: #2d4681;
+  background-color: rgb(255, 255, 255);
+}
+
+
+
+.footer {
+  background-color: #2790f3;
+  text-rendering: auto;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-emphasis-color: white;
+}
+
+
+.form-control-sm {
+  max-width: 350px; /* cambiar este valor para ajustar el ancho deseado */
+  margin: 0 auto; /* esto centrará el elemento horizontalmente */
+}
+
+.mb-3 {
+  max-width: 300px;
+  margin: 0 auto
+}

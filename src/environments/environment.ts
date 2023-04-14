@@ -14,6 +14,8 @@ export const environment = {
   },
 
   production: false,
+  urlApiUsers: 'https://localhost:7077/api/User',
+  urlApiProjects: 'https://localhost:7273/',
 };
 
 /*
