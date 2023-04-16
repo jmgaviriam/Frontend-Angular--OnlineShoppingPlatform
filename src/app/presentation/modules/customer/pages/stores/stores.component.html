@@ -1,1 +1,14 @@
-<p>stores works!</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stores</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+</head>
+<div class="stores-container">
+  <div class="store-box" *ngFor="let store of storesList">
+    <i class="bi bi-{{store.logo}}"></i>
+    <h3>{{ store.name }}</h3>
+    <p>{{ store.description }}</p>
+    <a [routerLink]="['/store', store.storeId]">Ir a la tienda</a>
+  </div>
+</div>

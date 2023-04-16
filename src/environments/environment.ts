@@ -15,6 +15,7 @@ export const environment = {
 
   production: false,
   urlApiUsers: 'https://localhost:7077/api/User',
+  urlApiStores: 'https://localhost:7077/api/Store',
   urlApiProjects: 'https://localhost:7273/',
 };
 

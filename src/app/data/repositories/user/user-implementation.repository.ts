@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from 'firebase/auth';
 import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/domain/models';
 import { UserRepository } from 'src/app/domain/repositories';

@@ -21,9 +21,10 @@
     <form class="form-inline d-flex align-items-center">
       <span class="text-dark me-5">¡Hi! {{firstName}}, lets going to </span>
       <button *ngIf="role === 'Vendor'" class="btn btn-outline-success mx-2" type="button"
-        (click)="router.navigate(routeAdmStores)">Adm Store</button>
-      <button class="btn btn-outline-success mx-2" type="button" (click)="router.navigate(routeStores)">Stores</button>
-      <button class="btn btn-outline-dark" (click)="logout()">LogOut</button>
+        (click)="router.navigate(routeAdmStores)">Adm Store <i class="bi bi-boxes"></i></button>
+      <button class="btn btn-outline-success mx-2" type="button" (click)="router.navigate(routeStores)">Stores <i
+          class="bi bi-shop-window"></i></button>
+      <button class="btn btn-outline-dark" (click)="logout()">LogOut <i class="bi bi-door-closed-fill"></i></button>
     </form>
   </nav>
 
