@@ -17,7 +17,7 @@ export class SignupComponent {
     private userTypeService: UserTypeService
   ) {
     this.userType = this.userTypeService.getUserType();
-    console.log('User type:', this.userType);
+    //console.log('User type:', this.userType);
 
     this.form = new FormGroup({
       firstName: new FormControl('', [
@@ -37,9 +37,9 @@ export class SignupComponent {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
-        ),
+        // Validators.pattern(
+        //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+        // ),
       ]),
     });
   }

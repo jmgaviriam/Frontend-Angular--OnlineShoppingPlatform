@@ -23,7 +23,8 @@ export class LoginComponent {
     private userTypeService: UserTypeService
   ) {
     this.userType = this.userTypeService.getUserType();
-    console.log('User type:', this.userType);
+    //localStorage.setItem('rol', this.userType);
+    //console.log('User type:', this.userType);
 
     this.form = new FormGroup({
       email: new FormControl('', [

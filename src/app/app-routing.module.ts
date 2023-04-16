@@ -1,11 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './presentation/main/home/home.component';
-import { CartComponent } from './presentation/modules/customer/pages/cart/cart.component';
-import { LoginComponent } from './presentation/main/login/login.component';
-import { ProductDetailComponent } from './presentation/shared/pages/product-detail/product-detail.component';
-import { ProductListComponent } from './presentation/modules/vendor/pages/product-list/product-list.component';
-import { SignupComponent } from './presentation/main/signup/signup.component';
+import { HomeComponent } from './presentation/modules/login/pages/home/home.component';
 
 import {
   AngularFireAuthGuard,
@@ -13,7 +8,7 @@ import {
   redirectUnauthorizedTo,
 } from '@angular/fire/compat/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['home']);
 const redirectLoggedInToDashboard = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
@@ -23,11 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
+    loadChildren: () =>
+      import('./presentation/modules/login/login.module').then(
+        (m) => m.LoginModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToDashboard },
   },
   {
     path: 'dashboard',
@@ -36,19 +32,29 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    data: { authGuardPipe: redirectUnauthorizedToHome },
   },
   {
-    path: 'product-list',
-    component: ProductListComponent,
+    path: 'dashboard/customer',
+    loadChildren: () =>
+      import('./presentation/modules/customer/customer.module').then(
+        (m) => m.CustomerModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToHome },
   },
   {
-    path: 'product-detail/:id',
-    component: ProductDetailComponent,
+    path: 'dashboard/vendor',
+    loadChildren: () =>
+      import('./presentation/modules/vendor/vendor.module').then(
+        (m) => m.VendorModule
+      ),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToHome },
   },
   {
-    path: 'cart',
-    component: CartComponent,
+    path: '**',
+    component: HomeComponent,
   },
 ];
 

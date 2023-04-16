@@ -9,7 +9,6 @@ import { CreateUser } from '../../data/DTO/user/create-user';
 import { UserModel } from 'src/app/domain/models';
 import { CreateUserUseCase } from '../../domain/use-cases/user/create-user.usecase';
 import { UserTypeService } from '../user-type/user-type.service';
-import { SignupComponent } from 'src/app/presentation/main/signup/signup.component';
 
 /**
  * Servicio de autenticación de usuarios.
@@ -69,14 +68,14 @@ export class AuthService {
         .subscribe({
           next: (user) => {
             userData = user;
-            console.log(userData);
+            //console.log(userData);
           },
           error: (error) => {
             console.log(error);
           },
         });
 
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       this.afAuth.authState.subscribe((user) => {
         if (user != undefined) {
@@ -85,7 +84,7 @@ export class AuthService {
           localStorage.setItem('email', userData.email);
           localStorage.setItem('password', userData.password);
           localStorage.setItem('role', userData.role);
-          console.log(userData);
+          //console.log(userData);
           setTimeout(() => {
             this.router.navigate(['dashboard']);
           }, 1500);
@@ -125,7 +124,7 @@ export class AuthService {
             lastName,
             email,
             password,
-            localStorage.getItem('role') as string
+            role
           )
         )
         .subscribe({
@@ -141,7 +140,7 @@ export class AuthService {
           },
         });
       setTimeout(() => {
-        this.router.navigate(['product-list']);
+        this.router.navigate(['dashboard']);
       }, 1500);
     } catch (error) {
       window.alert(error);
@@ -169,8 +168,8 @@ export class AuthService {
   async GoogleAuth() {
     const res = await this.AuthLogin(new auth.GoogleAuthProvider());
     setTimeout(() => {
-      this.router.navigate(['product-list']);
-    }, 2500);
+      this.router.navigate(['dashboard']);
+    }, 5000);
   }
 
   /**
@@ -181,6 +180,7 @@ export class AuthService {
    * @returns {Promise} - Promesa que devuelve un objeto de usuario.
    */
   private async AuthLogin(provider: any) {
+    const role = this.userTypeService.getUserType();
     try {
       const result = await this.afAuth.signInWithPopup(provider);
       this.ClearLocalStorage();
@@ -189,10 +189,10 @@ export class AuthService {
       localStorage.setItem('userId', result.user?.uid as string);
       console.log(result.user?.uid as string);
 
-      await new Promise((resolve) => setTimeout(resolve, 50));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       let userData!: UserModel;
-      console.log(userData);
+      // console.log(userData);
       this.getUserByIdUseCase
         .execute(localStorage.getItem('userId') as string)
         .subscribe({
@@ -212,9 +212,10 @@ export class AuthService {
         localStorage.setItem('email', userData.email);
         localStorage.setItem('password', userData.password);
         localStorage.setItem('role', userData.role);
-        console.log(userData);
+        //console.log('userData!=undefined');
+        // console.log(userData);
         setTimeout(() => {
-          this.router.navigate(['product-list']);
+          this.router.navigate(['dashboard']);
         }, 2500);
       } else {
         this.createUserUseCase
@@ -225,7 +226,7 @@ export class AuthService {
               'apellido',
               result.user?.email as string,
               'password',
-              this.userType
+              role
             )
           )
           .subscribe({
@@ -235,14 +236,14 @@ export class AuthService {
               localStorage.setItem('email', data.email.toString());
               localStorage.setItem('password', data.password.toString());
               localStorage.setItem('role', data.role.toString());
-              console.log(userData);
+              //console.log(userData);
             },
             error: (error) => {
               console.log(error);
             },
           });
         setTimeout(() => {
-          this.router.navigate(['product-list']);
+          this.router.navigate(['dashboard']);
         }, 2500);
       }
     } catch (error) {

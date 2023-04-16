@@ -1,1 +1,30 @@
-<p>navbar works!</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Shopping Platform </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<header class="header">
+
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid ps-sm-5">
+      <a class="navbar-brand text-dark" [routerLink]="['/dashboard']">
+        <strong>
+          <h2 class="titles text-light">Welcome Back</h2>
+        </strong>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline d-flex align-items-center">
+      <span class="text-dark me-5">¡Hi! {{firstName}}, lets going to </span>
+      <button *ngIf="role === 'Vendor'" class="btn btn-outline-success mx-2" type="button"
+        (click)="router.navigate(routeAdmStores)">Adm Store</button>
+      <button class="btn btn-outline-success mx-2" type="button" (click)="router.navigate(routeStores)">Stores</button>
+      <button class="btn btn-outline-dark" (click)="logout()">LogOut</button>
+    </form>
+  </nav>
+
+</header>

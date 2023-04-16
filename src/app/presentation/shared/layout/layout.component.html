@@ -1,1 +1,10 @@
-<p>layout works!</p>
+<div class="header">
+  <sofka-navbar></sofka-navbar>
+</div>
+<div class="body">
+  <sofka-access-denied *ngIf="allowToAccess === false"></sofka-access-denied>
+  <router-outlet *ngIf="allowToAccess === true"></router-outlet>
+</div>
+<div class="footer">
+  <sofka-footer></sofka-footer>
+</div>

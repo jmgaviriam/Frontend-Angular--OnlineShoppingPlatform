@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserTypeService } from 'src/app/services/user-type/user-type.service';
 
 @Component({
@@ -7,13 +8,22 @@ import { UserTypeService } from 'src/app/services/user-type/user-type.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private userTypeService: UserTypeService) {}
+  login: string[];
+
+  constructor(
+    private userTypeService: UserTypeService,
+    private router: Router
+  ) {
+    this.login = ['login'];
+  }
 
   setCustomer(): void {
     this.userTypeService.setUserType('Customer');
+    this.router.navigate(['login']);
   }
 
   setVendor(): void {
     this.userTypeService.setUserType('Vendor');
+    this.router.navigate(['login']);
   }
 }
