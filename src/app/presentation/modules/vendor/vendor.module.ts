@@ -5,9 +5,16 @@ import { SharedModule } from '../../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdmStoreComponent } from './pages/adm-store/adm-store.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { CustomerRoutingModule } from '../customer/customer-routing.module';
 
 @NgModule({
   declarations: [AdmStoreComponent, ProductListComponent],
-  imports: [CommonModule, VendorRoutingModule, SharedModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    VendorRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    CustomerRoutingModule,
+  ],
 })
 export class VendorModule {}

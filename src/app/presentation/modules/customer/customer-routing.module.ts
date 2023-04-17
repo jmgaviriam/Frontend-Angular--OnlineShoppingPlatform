@@ -3,7 +3,7 @@ import { LayoutComponent } from '../../shared/layout/layout.component';
 import { StoresComponent } from './pages/stores/stores.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './pages/cart/cart.component';
-import { HasRoleGuard } from '../../shared/guards/has-role.guard';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path: 'stores',
         component: StoresComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
       },
       {
         path: 'cart',

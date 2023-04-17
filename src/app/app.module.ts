@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './data/modules/user.module';
 import { StoreModule } from './data/modules/store.module';
+import { ProductModule } from './data/modules/product.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { StoreModule } from './data/modules/store.module';
     CommonModule,
     UserModule,
     StoreModule,
+    ProductModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,4 +1,4 @@
-export interface ProductModel {
+export interface UpdateProduct {
   productId: string;
   storeId: string;
   name: string;

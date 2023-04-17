@@ -9,6 +9,7 @@
     <i class="bi bi-{{store.logo}}"></i>
     <h3>{{ store.name }}</h3>
     <p>{{ store.description }}</p>
-    <a [routerLink]="['/store', store.storeId]">Ir a la tienda</a>
+    <button class="btn btn-outline-dark" (click)="goToStoreDashboard(store.storeId)">
+      <i class="bi bi-sunglasses"></i> </button>
   </div>
 </div>
