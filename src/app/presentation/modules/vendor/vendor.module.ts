@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdmStoreComponent } from './pages/adm-store/adm-store.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { CustomerRoutingModule } from '../customer/customer-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdmStoreComponent, ProductListComponent],
   imports: [
     CommonModule,
     VendorRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
     CustomerRoutingModule,
