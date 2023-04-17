@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common';
 import { UserModule } from './data/modules/user.module';
 import { StoreModule } from './data/modules/store.module';
 import { ProductModule } from './data/modules/product.module';
+import { OrderModule } from './data/modules/order.module';
+import { OrderItemModule } from './data/modules/order-item.module';
+import { PaymentModule } from './data/modules/payment.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +21,9 @@ import { ProductModule } from './data/modules/product.module';
     UserModule,
     StoreModule,
     ProductModule,
+    OrderModule,
+    OrderItemModule,
+    PaymentModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
