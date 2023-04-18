@@ -4,6 +4,10 @@
 
 Una plataforma de compras en línea es un software diseñado para permitir a los usuarios comprar bienes y servicios a través de internet. Los usuarios pueden acceder a la plataforma a través de un sitio web o aplicación móvil, donde pueden buscar y comparar productos de diferentes vendedores, agregar productos a sus carritos de compras y realizar pagos seguros. Los vendedores también pueden utilizar la plataforma para crear y administrar su tienda en línea, administrar su inventario y procesar pedidos y pagos. El software también puede incluir funciones de seguimiento de envíos, gestión de devoluciones y generación de informes sobre las ventas y el rendimiento de la tienda.
 
+
+## Deploy url
+https://onlineshoppingplatform-ec59a.web.app/
+
 Dentro de los tiempos establecidos para el proyecto, se logró implementar una plataforma que permite El ingreso de Clientes y Vendedores, según su rol.
 ![Home](https://user-images.githubusercontent.com/68021847/232731037-787f4e6c-7caf-4b8f-8026-c5f2b7063126.JPG)
 
