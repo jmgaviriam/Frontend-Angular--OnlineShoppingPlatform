@@ -17,7 +17,8 @@ Se implementó una página de inicio en la que los usuarios pueden ver su histor
 ![Dashboard](https://user-images.githubusercontent.com/68021847/232730068-2a903267-f0d3-4986-b710-725248e97a7b.JPG)
 
 Se implementó una interfaz para vendedores en la que pueden administrar los productos de su tienda.
-![AdmStore](https://user-images.githubusercontent.com/68021847/232729955-3c6791f5-2874-49a4-8d07-e52d7126fd18.JPG)
+
+![AdmStore](https://user-images.githubusercontent.com/68021847/232740240-2caeb310-5ad8-4ce4-9a60-e06af433654b.JPG)
 
 Cada usuario puede ingresar a las tiendas registradas y realizar compras.
 ![Stores](https://user-images.githubusercontent.com/68021847/232730192-bb5fe811-e193-40c1-8eca-64b4402812d8.JPG)
