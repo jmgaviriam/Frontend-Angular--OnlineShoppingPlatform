@@ -28,10 +28,6 @@ export class AdmStoreComponent implements OnInit {
   form: FormGroup;
   editForm: FormGroup;
   product: CreateProduct;
-  newProductName: string = '';
-  newProductDescription: string = '';
-  newProductQuantity: number = 0;
-  newProductPrice: number = 0;
 
   showEditForm = false;
   selectedProductId: string = '';

@@ -1,7 +1,7 @@
 export class CreatePayment {
   paymentDate: Date;
   amount: number;
-  paymentMehtod: string;
+  paymentMethod: string;
   cardNumber: string;
   cardHolderName: string;
   CVV: string;
@@ -10,7 +10,7 @@ export class CreatePayment {
   constructor(
     paymentDate: Date,
     amount: number,
-    paymentMehtod: string,
+    paymentMethod: string,
     cardNumber: string,
     cardHolderName: string,
     CVV: string,
@@ -18,7 +18,7 @@ export class CreatePayment {
   ) {
     this.paymentDate = paymentDate;
     this.amount = amount;
-    this.paymentMehtod = paymentMehtod;
+    this.paymentMethod = paymentMethod;
     this.cardNumber = cardNumber;
     this.cardHolderName = cardHolderName;
     this.CVV = CVV;

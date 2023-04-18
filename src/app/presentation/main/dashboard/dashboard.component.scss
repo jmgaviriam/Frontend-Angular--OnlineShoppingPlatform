@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.orders {
+  padding: 20px;
+  width: 50%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.orders h2 {
+  margin-bottom: 10px;
+}
+
+.orders form {
+  margin-bottom: 20px;
+}
+
+.orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders th,
+.orders td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.orders th {
+  background-color: #f2f2f2;
+}
+
+.image-container {
+  width: 50%;
+  height: 100%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

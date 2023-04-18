@@ -6,12 +6,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { CartComponent } from './pages/cart/cart.component';
 import { StoresComponent } from './pages/stores/stores.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StoresComponent, CartComponent, ProductsComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
   ],

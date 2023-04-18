@@ -18,9 +18,9 @@ export const environment = {
   urlApiStores: 'https://localhost:7077/api/Store',
   urlApiProducts: 'https://localhost:7077/api/Product',
 
-  urlApiOrderItems: 'https://localhost:7273/api/OrderItem',
-  urlApiOrders: 'https://localhost:7273/api/Order',
-  urlApiPayments: 'https://localhost:7273/api/Payment',
+  urlApiOrderItems: 'https://localhost:7208/api/OrderItem',
+  urlApiOrders: 'https://localhost:7208/api/Order',
+  urlApiPayments: 'https://localhost:7208/api/Payment',
 };
 
 /*
