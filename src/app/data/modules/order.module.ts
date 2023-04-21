@@ -7,6 +7,7 @@ import { UpdateOrderUseCase } from 'src/app/domain/use-cases/order/update-order.
 import { GetOrderByIdUseCase } from 'src/app/domain/use-cases/order/get-order-by-id.usecase';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderImplementationRepository } from '../repositories/order/order-implementation.repository';
+import { OrdersByUserUseCase } from 'src/app/domain/use-cases/order/orders-by-user.usecase';
 
 const createOrderUseCaseFactory = (orderRepo: OrderRepository) =>
   new CreateOrderUseCase(orderRepo);
@@ -40,12 +41,21 @@ export const updateOrderUseCaseProvider = {
   deps: [OrderRepository],
 };
 
+const orderByUserFactory = (orderRepo: OrderRepository) =>
+  new OrdersByUserUseCase(orderRepo);
+export const orderByUserProvider = {
+  provide: OrdersByUserUseCase,
+  useFactory: orderByUserFactory,
+  deps: [OrderRepository],
+};
+
 @NgModule({
   providers: [
     createOrderUseCaseProvider,
     deleteOrderUseCaseProvider,
     getOrderByIdUseCaseProvider,
     updateOrderUseCaseProvider,
+    orderByUserProvider,
     {
       provide: OrderRepository,
       useClass: OrderImplementationRepository,

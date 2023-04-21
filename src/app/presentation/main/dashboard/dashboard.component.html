@@ -7,22 +7,18 @@
 <div class="container">
   <div class="orders">
     <h2>Orders history</h2>
-    <form>
-      <input type="text" placeholder="Buscar...">
-      <button type="submit">Buscar</button>
-    </form>
     <table>
       <thead>
         <tr>
-          <th>Order number</th>
-          <th>Buy date</th>
-          <th>State</th>
+          <th scope="col">Order number</th>
+          <th scope="col">Buy date</th>
+          <th scope="col">State</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orders">
-          <td>{{ order.orderNumber }}</td>
-          <td>{{ order.purchaseDate }}</td>
+        <tr *ngFor="let order of ordersList">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.orderDate  | date: 'dd/MM/yyyy' }}</td>
           <td>{{ order.status }}</td>
         </tr>
       </tbody>

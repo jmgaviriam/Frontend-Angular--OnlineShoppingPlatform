@@ -2,9 +2,9 @@ export class UpdateOrder {
   orderId: string;
   userId: string;
   paymentId: string;
-  orderDate: Date;
-  shippingDate: Date;
-  deliveredDate: Date;
+  orderDate: string;
+  shippingDate: string;
+  deliveryDate: string;
   shippingAddress: string;
   totalAmount: number;
   status: string;
@@ -13,9 +13,9 @@ export class UpdateOrder {
     orderId: string,
     userId: string,
     paymentId: string,
-    orderDate: Date,
-    shippingDate: Date,
-    deliveredDate: Date,
+    orderDate: string,
+    shippingDate: string,
+    deliveryDate: string,
     shippingAddress: string,
     totalAmount: number,
     status: string
@@ -25,7 +25,7 @@ export class UpdateOrder {
     this.paymentId = paymentId;
     this.orderDate = orderDate;
     this.shippingDate = shippingDate;
-    this.deliveredDate = deliveredDate;
+    this.deliveryDate = deliveryDate;
     this.shippingAddress = shippingAddress;
     this.totalAmount = totalAmount;
     this.status = status;

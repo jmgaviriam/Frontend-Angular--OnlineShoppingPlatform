@@ -10,4 +10,5 @@ export abstract class OrderRepository {
   abstract GetOrderById(uid: string): Observable<OrderModel>;
   abstract UpdateOrder(order: UpdateOrder): Observable<OrderModel>;
   abstract DeleteOrder(uid: string): Observable<OrderModel>;
+  abstract OrdersByUser(uid: string): Observable<OrderModel[]>;
 }

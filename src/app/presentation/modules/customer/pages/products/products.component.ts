@@ -11,6 +11,10 @@ import { CreateOrderUseCase } from 'src/app/domain/use-cases/order/create-order.
 import { CreatePaymentUseCase } from 'src/app/domain/use-cases/payment/create-payment.usecase';
 import { PaymentModel } from 'src/app/domain/models/payment.model';
 import { OrderModel } from 'src/app/domain/models/order.model';
+import { Subscription, forkJoin, timer } from 'rxjs';
+import { GetProductByIdUseCase } from 'src/app/domain/use-cases/product/get-product-by-id.usecase';
+import { UpdateProductUseCase } from 'src/app/domain/use-cases/product/update-product.usecase';
+import { CreateProduct } from 'src/app/data/DTO/product/create-product';
 
 @Component({
   selector: 'sofka-products',
@@ -24,7 +28,7 @@ export class ProductsComponent {
   productsList: ProductModel[] = [];
 
   //
-  date: Date;
+
   //Order Item
   orderItems: CreateOrderItem[] = [];
   orderItem: CreateOrderItem;
@@ -32,6 +36,7 @@ export class ProductsComponent {
   showitemForm = false;
 
   //Payment
+  isPaymentSuccessful = false;
   payment: CreatePayment;
   showPaymentForm = false;
   paymentForm: FormGroup;
@@ -43,7 +48,9 @@ export class ProductsComponent {
     private getProductsByStore: GetProductsByStoreUseCase,
     private createOrderItem: CreateOrderItemUseCase,
     private createPayment: CreatePaymentUseCase,
-    private createOrder: CreateOrderUseCase
+    private createOrder: CreateOrderUseCase,
+    private getProductById: GetProductByIdUseCase,
+    private updateProduct: UpdateProductUseCase
   ) {
     this.orderItem = {
       orderId: '',
@@ -73,14 +80,12 @@ export class ProductsComponent {
       CVV: new FormControl('', [Validators.required]),
     });
 
-    this.date = new Date('2023-04-18T07:50:08.560Z');
-
     this.order = {
       userId: '',
       paymentId: '',
-      orderDate: new Date('2023-04-18T07:50:08.560Z'),
-      shippingDate: new Date(),
-      deliveredDate: new Date(),
+      orderDate: this.payment.paymentDate.toISOString(),
+      shippingDate: this.payment.paymentDate.toISOString(),
+      deliveryDate: this.payment.paymentDate.toISOString(),
       shippingAddress: '',
       totalAmount: 0,
       status: '',
@@ -127,8 +132,6 @@ export class ProductsComponent {
   }
 
   generateOrder() {
-    const date = new Date().toISOString();
-    this.payment.paymentDate = new Date();
     this.payment.amount = this.orderItems.reduce((acc, item) => {
       return acc + item.price * item.quantity;
     }, 0);
@@ -143,12 +146,10 @@ export class ProductsComponent {
     this.createPayment.execute(this.payment).subscribe({
       next: (payment: PaymentModel) => {
         this.order.paymentId = payment.paymentId;
-        this.order.orderDate = new Date(2023, 3, 18, 0, 0, 0, 0);
-        this.order.shippingDate = new Date(2023, 3, 18, 0, 0, 0, 0);
-        this.order.deliveredDate = new Date(2023, 3, 18, 0, 0, 0, 0);
+
         this.order.shippingAddress = 'Calle 123';
         this.order.totalAmount = this.payment.amount;
-        this.order.status = 'En proceso';
+        this.order.status = 'In process';
         this.order.userId = localStorage.getItem('userId') || '';
         console.log(payment);
         console.log(this.order);
@@ -159,6 +160,18 @@ export class ProductsComponent {
               this.createOrderItem.execute(item).subscribe({
                 next: (orderItem: OrderItemModel) => {
                   console.log(orderItem);
+                  this.getProductById.execute(orderItem.productId).subscribe({
+                    next: (product: ProductModel) => {
+                      console.log(product.quantity);
+                      product.quantity = product.quantity - orderItem.quantity;
+                      console.log(product.quantity);
+                      this.updateProduct.execute(product).subscribe({
+                        next: (product: CreateProduct) => {
+                          console.log(product);
+                        },
+                      });
+                    },
+                  });
                 },
                 error: (err) => {
                   console.log(err);
@@ -177,6 +190,11 @@ export class ProductsComponent {
           },
         });
       },
+    });
+    this.isPaymentSuccessful = true;
+    timer(3000).subscribe(() => {
+      this.orderItems = [];
+      this.showPaymentForm = false;
     });
   }
 }

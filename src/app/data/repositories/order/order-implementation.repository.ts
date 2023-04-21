@@ -15,6 +15,12 @@ export class OrderImplementationRepository extends OrderRepository {
     super();
   }
 
+  OrdersByUser(uid: string): Observable<OrderModel[]> {
+    return this.http.get<OrderModel[]>(
+      environment.urlApiOrders + '/ordersbyuser/' + uid
+    );
+  }
+
   CreateOrder(order: CreateOrder): Observable<OrderModel> {
     return this.http.post<OrderModel>(environment.urlApiOrders, order);
   }
